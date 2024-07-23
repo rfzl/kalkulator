@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kalkulator Sederhana Industri</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .container {
+      width: 400px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #001aff;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 9px;
+      margin-bottom: 9px;
+      border: 1px solid #001aff;
+    }
+
+    select {
+      width: 100%;
+      padding: 9px;
+      margin-bottom: 9px;
+      border: 1px solid #001aff;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #01448b;
+      color: white;
+      border: none;
+    }
+
+    #hasil {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .hasil-negatif {
+      color: #FF0000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Kalkulator Sederhana Industri</h1>
+    <input type="text" id="angka1" placeholder="Masukkan Angka Pertama Kamu">
+    <select id="operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="text" id="angka2" placeholder="Masukkan Angka Kedua Kamu">
+    <button onclick="hitung()">Hasilnya</button>
+    <p id="hasil" class="hasil-negatif"></p>
+  </div>
+
+  <script>
+    function hitung() {
+      const angka1 = parseFloat(document.getElementById("angka1").value);
+      const operator = document.getElementById("operator").value;
+      const angka2 = parseFloat(document.getElementById("angka2").value);
+
+      let hasil;
+      switch (operator) {
+        case "+":
+          hasil = angka1 + angka2;
+          break;
+        case "-":
+          hasil = angka1 - angka2;
+          break;
+        case "*":
+          hasil = angka1 * angka2;
+          break;
+        case "/":
+          if (angka2 === 0) {
+            alert("Hasil pembagian dengan 0 tidak terdefinisi!");
+          } else {
+            hasil = angka1 / angka2;
+          }
+          break;
+      }
+
+      document.getElementById("hasil").textContent = hasil;
+    }
+  </script>
+</body>
+</html>
